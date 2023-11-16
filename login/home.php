@@ -1,6 +1,7 @@
 <?php
 // We need to use sessions, so you should always start sessions using the below code.
 session_start();
+
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
 	header('Location: index.html');
@@ -27,6 +28,30 @@ if (!isset($_SESSION['loggedin'])) {
 		<div class="content">
 			<h2>Home Page</h2>
 			<p>Welcome back, <?=$_SESSION['name']?>!</p>
+
+			<h2>Appointments</h2>
+			<div>
+					<?php
+						$con = mysqli_connect('localhost', 'root', '', 'blood clinic'); //The Blank string is the password
+						
+						$query = "SELECT * FROM donor"; //You don't need a ; like you do in SQL
+						$result = $con->query($query);
+
+						echo "<table>"; // start a table tag in the HTML
+						echo "<tr><th>Date</th><th>Clinic</th><th>Donor Name</th><th>ID</th><th>Blood Type</th><th>History</th></tr>";
+
+						
+						while ($row = $result->fetch_assoc()) {   //Creates a loop to loop through results
+						echo "<tr><td>" . htmlspecialchars($row['ID']) . "</td><td>" . htmlspecialchars($row['Blood_type']) . "</td></tr>";  //$row['index'] the index here is a field name
+						}
+						
+						echo "</table>"; //Close the table in HTML
+						
+						$con->close(); //Make sure to close out the database connection
+						
+						echo "<tr>"
+					?>
+			</div>
 		</div>
 	</body>
 </html>

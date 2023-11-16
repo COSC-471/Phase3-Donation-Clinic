@@ -12,12 +12,12 @@ if (mysqli_connect_errno()) {
 }
 
 // Now we check if the data was submitted, isset() function will check if the data exists.
-if (!isset($_POST['username'], $_POST['password'], $_POST['fname'], $_POST['lname'], $_POST['ssn'], $_POST['tel'])) {
+if (!isset($_POST['username'], $_POST['password'], $_POST['fname'], $_POST['lname'], $_POST['ssn'], $_POST['email'])) {
 	// Could not get the data that should have been sent.
 	exit('Please complete the registration form!');
 }
 // Make sure the submitted registration values are not empty.
-if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['fname']) || empty($_POST['lname']) || empty($_POST['ssn']) || empty($_POST['tel'])) {
+if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['fname']) || empty($_POST['lname']) || empty($_POST['ssn']) || empty($_POST['email'])) {
 	// One or more values are empty.
 	exit('Please complete the registration form');
 }
@@ -35,12 +35,12 @@ if ($stmt = $con->prepare('SELECT Location_ID, password FROM employee WHERE user
 	} 
     else {
         // Username doesn't exists, insert new account
-        if ($stmt = $con->prepare('INSERT INTO employee (SSN, First_Name, Last_Name, Username, Password) 
-        VALUES (?, ?, ?, ?, ?)')) {
+        if ($stmt = $con->prepare('INSERT INTO employee (SSN, Email, First_Name, Last_Name, Username, Password) 
+        VALUES (?, ?, ?, ?, ?, ?)')) {
             // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-            $stmt->bind_param('issss', $_POST['ssn'], $_POST['fname'], $_POST['lname'],  $_POST['username'], $password);
+            $stmt->bind_param('isssss', $_POST['ssn'], $_POST['email'], $_POST['fname'], $_POST['lname'],  $_POST['username'], $password);
             $stmt->execute();
 
             header('Location: home.php');        
