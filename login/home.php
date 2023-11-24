@@ -71,10 +71,12 @@ if (!isset($_SESSION['loggedin'])) {
 							$blood = $results['Blood_type'];
 
 						echo "<tr><td>
-						<form method='post' action='delete.php'><input id='delete' type='submit' name='submit' value='&#xf1f8;'>
-						<input type='hidden' name='Donor_ID' value='" . $row['Donor_ID'] . "'/>
-						<input type='hidden' name='Date' value='" . $date . "'/>
-						</form</td><td>"
+						<form method='post' action='delete.php'>
+							<input id='delete' type='submit' name='submit' value='&#xf1f8;'>
+							<input type='hidden' name='Donor_ID' value='" . $row['Donor_ID'] . "'>
+							<input type='hidden' name='Date' value='" . $date . "'>
+						</form></td><td>"
+
 						. htmlspecialchars($date) . "</td><td>" 
 						. htmlspecialchars($employee) . "</td><td>" 
 						. htmlspecialchars($fname) . "</td><td>" 
@@ -132,8 +134,6 @@ if (!isset($_SESSION['loggedin'])) {
 						echo "</table>"; //Close the table in HTML
 						
 						$con->close(); //Make sure to close out the database connection
-						
-						echo "<tr>"
 					?>
 			</div>
 		</div>
