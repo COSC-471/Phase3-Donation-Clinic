@@ -216,6 +216,11 @@ table td th {
 	width: 90px;
 }
 
+#btn:hover {
+	background-position: 0%;
+	color: white;
+}
+
 tr:hover #btn {
 	background-position: 0%;
 	color: white;
@@ -236,4 +241,40 @@ tr:hover td {
 
 #delete {
 	font-family: FontAwesome;
+}
+
+#search {
+	display: flex; /* 2. display flex to the rescue */
+	flex-direction: row;
+	border-bottom: 1px solid #e0e0e3;
+	margin-bottom: 30px;
+}
+
+#search input[type="text"] {
+	width: 350px;
+	margin-bottom: 20px;
+	height: 50px;
+}
+
+#search input[type="submit"] {
+	height: 50px;
+	font-weight: bold;
+}
+
+#edit input[type="text"], #edit input[type="password"], #edit input[type="date"]  {
+	height: 50px;
+	width: 200px;
+	display: flex;
+}
+
+#edit label {
+	width: 300px;
+	height: 50px;
+	display: flex; /* 1. oh noes, my inputs are styled as block... */
+}
+
+#edit {
+	display: flex; /* 2. display flex to the rescue */
+	flex-direction: row;
+	flex-wrap: wrap;
 }

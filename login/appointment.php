@@ -65,10 +65,6 @@
         $stmt->bind_param('iiis', $location, $employee, $donor, $date);
         $stmt->execute();
 
-        echo '<script>alert("' . 
-            $location . " " . $employee . " " . $donor . " " . $date
-        .'")</script>';
-
         header('Location: home.php');        
     }
 ?>
@@ -95,7 +91,7 @@
 
 
 			<form action="appointment.php" name="myform" method="post" autocomplete="off">
-                <label>Employee Attending:</label>
+                <label>Employee Attending</label>
                 <select id="select_id" name="Category" onchange="myform.submit();">
                     <option disabled selected value> -- select an option -- </option>
                     <?php 
@@ -110,14 +106,15 @@
 
                     <?php endwhile; ?>
                 </select>
-                <br><br>
-                <input type="date" name="date" value="<?php echo isset($_SESSION['date'])?$_SESSION['date']:''?>" placeholder="00/00/0000" id="date" required>
-				<input type="text" name="clinic" value="<?php echo isset($_SESSION['location'])?$_SESSION['location']:''?>" id="clinic" disabled>
-                
-                <br>
 
+                <br><br>
+                <label>Date</label>
+                <input type="date" name="date" value="<?php echo isset($_SESSION['date'])?$_SESSION['date']:''?>" placeholder="00/00/0000" id="date" required>
+                <label>Clinic</label>
+                <input type="text" name="clinic" value="<?php echo isset($_SESSION['location'])?$_SESSION['location']:''?>" id="clinic" disabled>
                 <label>Donor:</label>
                 <select id="select_id2" name="Donor" onchange="myform.submit();">
+
                 <option disabled selected value> -- select an option -- </option>
                     <?php 
                         // use a while loop to fetch data 
