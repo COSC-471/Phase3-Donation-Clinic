@@ -182,7 +182,7 @@ body.loggedin {
 	padding: 25px;
 	background-color: #fff;
 }
-.content > p table td, .content > div table td {
+.content > p table td, .content > div table td, .content div table th {
 	padding: 5px;
 }
 .content > p table td:first-child, .content > div table td:first-child {
@@ -195,6 +195,45 @@ body.loggedin {
 	margin: 0 0 10px 0;
 }
 
-#website {
-	
+table {
+	table-layout: fixed;
+	text-align: left;
+	width: 100%;
+	display: table;
+}
+
+table td th {
+	width: 100%;
+}
+
+#btn {
+	border: 1px solid #133d4e;
+	background-image: linear-gradient(to right, #133d4e 40%,  white 60%);
+    color: #133d4e;
+	background-size: 300% 100%;
+	transition: background-position 1s;
+	background-position: 100%;
+	width: 90px;
+}
+
+tr:hover #btn {
+	background-position: 0%;
+	color: white;
+}
+
+tr:hover td {
+	background-color: #20353d22;
+}
+
+.error {
+	text-align: center;
+	padding: 5px;
+}
+
+.row1 td{
+	background-color:rgba(249, 248, 248, 0.3);
+}
+
+#delete {
+	font-family: FontAwesome;
 }

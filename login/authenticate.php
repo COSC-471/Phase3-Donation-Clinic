@@ -39,18 +39,16 @@ if ($stmt = $con->prepare('SELECT SSN, Password FROM employee WHERE username = ?
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['name'] = $_POST['username'];
             $_SESSION['id'] = $id;
-            echo $_SESSION['id'];
             header('Location: home.php');        
         } else {
             // Incorrect password
-            echo $_POST['username'].'<br>';
-            echo $_POST['password'].'<br>';
-            echo $password;
-            echo 'Incorrect username and/or password!1';
+            header('Location: login.php');      
+            $_SESSION['usererror'] = TRUE;
         }
     } else {
         // Incorrect username
-        echo 'Incorrect username and/or password!';
+        $_SESSION['usererror'] = TRUE;
+        header('Location: login.php');   
     }
     
 	$stmt->close();

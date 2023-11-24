@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Register</title>
+		<link href="register.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+	</head>
+	<body id="new-appt">
+        <nav class="navtop">
+			<div>
+				<h1>Website Title</h1>
+				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
+				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+			</div>
+		</nav>
+        <a href="appointment.php"><button>Back to New Appointment</button></a>
+		<div id="appt" class="register">
+			<h1>Add Donor</h1>
+			<form action="donor-register.php" method="post" autocomplete="off">
+				<label>First Name</label>
+                <input type="text" name="fname" placeholder="First Name" id="fname" required>
+                <label>Last Name</label>
+				<input type="text" name="lname" placeholder="Last Name" id="lname" required>
+                <label>Patient ID</label>
+				<input type="number" name="id" placeholder="00000000" id="id" required>
+                <label>Blood Type</label>
+				<input type="text" name="blood-type" placeholder="Blood type" id="blood-type" required>
+                <label>Email</label>
+				<input type="text" name="email" placeholder="user@gmail.com" id="email" required>
+                <label>History</label>
+				<input type="text" name="history" placeholder="history" id="history" required>
+
+                <input type="submit" value="Register">
+
+			</form>
+		</div>
+	</body>
+</html>

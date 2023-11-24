@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,6 +21,13 @@
 					<i class="fas fa-lock"></i>
 				</label>
 				<input type="password" name="password" placeholder="Password" id="password" required>
+				<?php
+				if (isset($_SESSION['usererror']) && $_SESSION['usererror'] == TRUE) {
+					// Could not get the data that should have been sent.
+					$_SESSION['usererror'] == FALSE;
+					echo('<p id="error"style="background-color: rgb(236, 156, 64); width: 100%">Incorrect username and/or password</p>');
+				}
+				?>
 				<input type="submit" value="Login">
 				<a href="register.html" class="button" target="_blank">Sign Up</a>		
 			</form>

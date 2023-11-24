@@ -35,7 +35,7 @@ body {
    background-color: #195167;
     color: #ffffff;
 }
-.register form input[type="password"], .register form input[type="text"], .register form input[type="email"] {
+.register form input[type="password"], .register form input[type="text"], .register form input[type="email"], .register form input[type="number"] {
     width: 310px;
     height: 50px;
     border: 1px solid #dee0e4;
@@ -58,3 +58,85 @@ body {
     transition: background-color 0.2s;
 }
 
+#new-appt {
+	background-color: #f3f4f7;
+}
+
+.navtop {
+	background-color: #2f3947;
+	height: 60px;
+	width: 100%;
+	border: 0;
+}
+.navtop div {
+	display: flex;
+	margin: 0 auto;
+	width: 1000px;
+	height: 100%;
+}
+.navtop div h1, .navtop div a {
+	display: inline-flex;
+	align-items: center;
+}
+.navtop div h1 {
+	flex: 1;
+	font-size: 24px;
+	padding: 0;
+	margin: 0;
+	color: #eaebed;
+	font-weight: normal;
+}
+.navtop div a {
+	padding: 0 20px;
+	text-decoration: none;
+	color: #c1c4c8;
+	font-weight: bold;
+}
+.navtop div a i {
+	padding: 2px 8px 0 0;
+}
+.navtop div a:hover {
+	color: #eaebed;
+}
+
+#appt {
+    width: 600px;
+}
+
+#appt form label {
+    width: 250px;
+    background-color: white;
+    color: black;
+}
+
+select {
+    height: 50px;
+    width: 150px;
+    text-align: center;
+}
+
+#appt {
+    text-align: right;
+}
+/* .register form input[type="password"], .register form input[type="text"], .register form input[type="email"] {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+.register form input[type="submit"], input[type="button"] {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #195167;
+   border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.2s;
+}
+.register form input[type="submit"]:hover {
+    background-color: #123b4b;
+    transition: background-color 0.2s;
+} */
