@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,6 +15,13 @@
 			<form action="register.php" method="post" autocomplete="off">
 				<label for="username"><i class="fas fa-user"></i></label>
 				<input type="text" name="username" placeholder="Username" id="username" required>
+				<?php
+				if (isset($_SESSION['reg-error']) && $_SESSION['reg-error'] == TRUE) {
+					// Could not get the data that should have been sent.
+					$_SESSION['reg-error'] = FALSE;
+					echo('<p id="error"style="background-color: rgb(236, 156, 64); width: 100%">Username taken</p>');
+				}
+				?>
 				<label for="password"><i class="fas fa-lock"></i></label>
 				<input type="password" name="password" placeholder="Password" id="password" required>
 

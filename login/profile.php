@@ -2,30 +2,34 @@
 // We need to use sessions, so you should always start sessions using the below code.
 session_start();
 
-// If the user is not logged in redirect to the login page...
-if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.html');
-	exit;
+// Connect to the database
+function connectDB() {
+	if (!isset($_SESSION['loggedin'])) {
+		header('Location: index.html');
+		exit;
+	}
+
+	$con = mysqli_connect('localhost', 'root', '', 'blood clinic');
+	if (mysqli_connect_errno()) {
+		exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+	}
+	return $con;
 }
 
-$DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = '';
-$DATABASE_NAME = 'blood clinic';
-
-$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-if (mysqli_connect_errno()) {
-	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+// Display user date
+function displayData($con) {
+	$stmt = $con->prepare('SELECT First_Name, Last_Name, SSN, Email, Username, Password FROM employee WHERE ssn = ?');
+	// In this case we can use the account ID to get the account info.
+	$stmt->bind_param('i', $_SESSION['id']);
+	$stmt->execute();
+	$stmt->bind_result($_SESSION['fname'], $_SESSION['lname'], $_SESSION['ssn'], $_SESSION['email'], $_SESSION['username'], $_SESSION['password']);
+	$stmt->fetch();
+	$stmt->close();
 }
 
-// We don't have the password or email info stored in sessions, so instead, we can get the results from the database.
-$stmt = $con->prepare('SELECT First_Name, Last_Name, SSN, Email, Username, Password FROM employee WHERE ssn = ?');
-// In this case we can use the account ID to get the account info.
-$stmt->bind_param('i', $_SESSION['id']);
-$stmt->execute();
-$stmt->bind_result($_SESSION['fname'], $_SESSION['lname'], $_SESSION['ssn'], $_SESSION['email'], $_SESSION['username'], $_SESSION['password']);
-$stmt->fetch();
-$stmt->close();
+$con = connectDB();
+displayData($con);
+
 ?>
 
 <!DOCTYPE html>
@@ -76,6 +80,6 @@ $stmt->close();
 				</table>
 			</div>
 		</div>
-	</body> <!--First_Name, Last_Name, SSN, Email, Username, Password FROM employee WHERE ssn = ?');
+	</body> 
 
 </html>

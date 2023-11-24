@@ -42,8 +42,8 @@ if ($stmt = $con->prepare('SELECT SSN, Password FROM employee WHERE username = ?
             header('Location: home.php');        
         } else {
             // Incorrect password
-            header('Location: login.php');      
             $_SESSION['usererror'] = TRUE;
+            header('Location: login.php');                  
         }
     } else {
         // Incorrect username

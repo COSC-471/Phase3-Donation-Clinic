@@ -95,8 +95,6 @@
                 <select id="select_id" name="Category" onchange="myform.submit();">
                     <option disabled selected value> -- select an option -- </option>
                     <?php 
-                        // use a while loop to fetch data 
-                        // from the $employees variable 
                         while ($category = mysqli_fetch_array($employees,MYSQLI_ASSOC)):
                     ?>
                         <option class="opt" value="<?php echo $category['SSN']?>"
