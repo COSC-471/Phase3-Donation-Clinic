@@ -59,7 +59,8 @@ body {
 }
 
 .navtop {
-	background-color: #2f3947;
+	background-color: rgb(171, 5, 5);
+	box-shadow: 2px 4px 7px #b3b1b1;
 	height: 60px;
 	width: 100%;
 	border: 0;
@@ -127,12 +128,6 @@ body.loggedin {
 	margin: 0 0 10px 0;
 }
 
-.navtop {
-	background-color: #2f3947;
-	height: 60px;
-	width: 100%;
-	border: 0;
-}
 .navtop div {
 	display: flex;
 	margin: 0 auto;

@@ -12,8 +12,8 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #ffffff;
     position: fixed;
+    top: 0;
     width: 100%;
     height: 100px;
     justify-content: center;
@@ -35,11 +35,11 @@ ul {
   }
   
   li a:hover:not(.active) {
-    background-color: #111;
+    background-color: #dcd5d5;
   }
   
   .active {
-    background-color: #257190;
+    background-color:  rgb(171, 5, 5);
   }
 
 
@@ -60,4 +60,22 @@ ul {
 img {
     width: 100%;
     aspect-ratio: 17/8;
+}
+
+#clinics {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("https://blogs.microsoft.com/wp-content/uploads/prod/sites/154/2017/10/red_cross_flag-1024x683.jpg");
+}
+
+#about-us {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("https://www.alertmedia.com/wp-content/uploads/2022/05/AM-Podcast-WebsiteGraphic-RedCross-v1.jpg");
+}
+
+#volunteers {
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-image: url("https://www.redcross.org/content/dam/icons/disaster-services/disaster-specialist/Disaster-Specialist-1000x1000-G-Pl.png.transform/1288/q70/feature/image.png");
 }

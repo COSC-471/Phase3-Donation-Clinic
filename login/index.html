@@ -8,7 +8,9 @@
 
     <body>
         <ul>
-            <li><a style="color: #123b4b; font-size: 2em; line-height:60px" href="#home">Home</a></li>
+            <li><a style="color: rgb(171, 5, 5);
+                ; font-size: 2em; line-height:60px; font-family: arial black" href="#home">Red Cross</a></li>
+            <li><a style="color: black; font-size: 1.9em; font-family: arial; line-height:70px" href="clinic_info.php">Clinics</a></li>
             <li style="float:right; line-height:60px"><a class="active" href="login.php">Employee Portal</a></li>
         </ul>
 
@@ -16,15 +18,15 @@
 
         <div class="flex-container">
 
-            <div class="flex-child">
+            <div id="volunteers" class="flex-child" style="cursor: pointer;" onclick="location.href='clinic_info.php'">
                 <h1>Volunteers Needed!</h1>
             </div>
 
-            <div class="flex-child">
+            <div id="clinics" class="flex-child" onclick="location.href='clinic_info.php'" style="cursor: pointer;">
                 <h1>Clinics Near Me</h1>
             </div>
             
-            <div class="flex-child">
+            <div id="about-us" class="flex-child" style="cursor: pointer;" onclick="location.href='https://www.redcross.org/about-us.html'">
                 <h1>About Us</h1>
             </div>
             

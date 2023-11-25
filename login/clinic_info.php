@@ -3,9 +3,9 @@
 <html lang="en">
     <head>
         <title>Clinic Information</title>
-        <!--
+        
         <link rel="stylesheet" href="index.css">
-        -->
+       
         <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,9 +14,13 @@
             padding: 0;
         }
 
+        img {
+            height: 350px;
+        }
+
         table {
             width: 80%;
-            margin: 20px auto;
+            margin: 80px auto;
             border-collapse: collapse;
             background-color: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -36,17 +40,28 @@
         tr:hover {
             background-color: #f5f5f5;
         }
+
+        ul {
+            background-color: rgb(250, 250, 244, 0.8);
+        }
     </style>
     </head>
 
     <body>
+        <ul>
+            <li><a style="font-family: arial black; color: #123b4b; font-size: 2em; line-height:60px" href="index.html">Red Cross</a></li>
+            <li><a style="color: #123b4b; font-size: 2em; line-height:60px" href="clinic_info.php">Clinics</a></li>
+            <li style="float:right; line-height:60px"><a class="active" href="login.php">Employee Portal</a></li>
+        </ul>
+        <img src="https://www.redcross.org/content/dam/redcross/uncategorized/5/763x260-red-cross-flag.jpg.transform/1288/q82/feature/image.jpeg"/>
+
         <table>
             <tr>
                 <th>Name</th><th>Location</th>
             </tr>
             <?php
                 // Connect to database
-                $con = mysqli_connect("localhost", "root", "", "blood_clinic");
+                $con = mysqli_connect("localhost", "root", "", "blood clinic");
 
                 if ($con -> connect_error) {
                     die("Connection failed:" . $con -> connect_error);
