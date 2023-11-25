@@ -43,7 +43,7 @@ body {
     margin-bottom: 20px;
     padding: 0 15px;
 }
-.register form input[type="submit"], input[type="button"] {
+.register form input[type="submit"], input[type="button"], #back {
     width: 100%;
     padding: 15px;
     margin-top: 20px;
@@ -109,35 +109,3 @@ body {
     background-color: white;
     color: black;
 }
-/*
-select {
-    height: 50px;
-    width: 150px;
-    text-align: center;
-}
-
-#appt {
-    text-align: right;
-} */
-/* .register form input[type="password"], .register form input[type="text"], .register form input[type="email"] {
-    width: 310px;
-    height: 50px;
-    border: 1px solid #dee0e4;
-    margin-bottom: 20px;
-    padding: 0 15px;
-}
-.register form input[type="submit"], input[type="button"] {
-    width: 100%;
-    padding: 15px;
-    margin-top: 20px;
-    background-color: #195167;
-   border: 0;
-    cursor: pointer;
-    font-weight: bold;
-    color: #ffffff;
-    transition: background-color 0.2s;
-}
-.register form input[type="submit"]:hover {
-    background-color: #123b4b;
-    transition: background-color 0.2s;
-} */

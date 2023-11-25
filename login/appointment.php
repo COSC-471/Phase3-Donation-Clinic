@@ -79,12 +79,20 @@
 	</head>
 	<body id="new-appt">
         <nav class="navtop">
-			<div>
-				<h1>Website Title</h1>
+            <div>
+				<a href="index.html"><i style="font-size: 3em;" class="fa-solid fa-plus"></i></a>
+				<h1>Red Cross</h1>
 				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
+
+		<form action="home.php" method="get" autocomplete="off">
+                <a href="home.php">
+                    <input style="width:200px; margin-left: 230px"type="button" value="Back to Home"/>
+                </a>
+			</form>
+
 		<div id="appt" class="register">
 
 			<h1>New Appointment</h1>

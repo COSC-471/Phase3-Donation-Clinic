@@ -10,6 +10,10 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 	</head>
 	<body>
+		<ul>
+            <li style="margin-left:100px;"><a style="color: white" id="home" href="index.html">Red Cross</a></li>
+            <li style="float:right"><a class="active" href="login.php">Employee Portal</a></li>
+        </ul>
 		<div class="login">
 			<h1>Login</h1>
 			<form action="authenticate.php" method="post">
@@ -25,7 +29,7 @@
 				if (isset($_SESSION['usererror']) && $_SESSION['usererror'] == TRUE) {
 					// Could not get the data that should have been sent.
 					$_SESSION['usererror'] = FALSE;
-					echo('<p id="error"style="background-color: rgb(236, 156, 64); width: 100%">Incorrect username and/or password</p>');
+					echo('<p id="error"style="background-color: rgb(236, 156, 64); width: 100%; text-align: center">Incorrect username and/or password</p>');
 				}
 				?>
 				<input type="submit" value="Login">

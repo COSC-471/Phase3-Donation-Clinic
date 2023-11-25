@@ -27,8 +27,31 @@ function displayData($con) {
 	$stmt->close();
 }
 
+function editPassword($con) {
+
+	if (isset($_POST['pwd']) && isset($_POST['new-pwd0']) && isset($_POST['new-pwd']) 
+	&& !empty($_POST['pwd']) && !empty($_POST['new-pwd0']) && !empty($_POST['new-pwd'])) {
+
+		$query = "SELECT password FROM employee WHERE Username='{$_POST['emp-id']}'";
+		$query_run = mysqli_query($con, $query);
+	
+		if ($_SESSION['new-pwd0'] == $_SESSION['new-pwd'] && mysqli_num_rows($query_run) > 0)  {
+			foreach($query_run as $items) {
+				if (password_verify($_POST['pwd'] == $items['Password'])) {
+					$query = "UPDATE employee SET Password='{$_POST['new-pwd']}' WHERE Username='{$_SESSION['username']}'";
+					$query_run = mysqli_query($con, $query);
+				}
+			}	
+		}
+		else
+
+			header(Location: 'profile.php');
+	}
+}
+
 $con = connectDB();
 displayData($con);
+editPassword($con);
 
 ?>
 
@@ -43,11 +66,17 @@ displayData($con);
 	<body class="loggedin">
 		<nav class="navtop">
 			<div>
-				<h1 id="website"><a href="home.php">Red Cross</a></h1>
+				<a href="index.html"><i style="font-size: 3em;" class="fa-solid fa-plus"></i></a>
+				<h1>Red Cross</h1>
 				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
+		<form action="home.php" method="get" autocomplete="off">
+                <a href="home.php">
+                    <input style="width:200px; margin-left: 230px"type="button" value="Back to Home"/>
+                </a>
+			</form>
 		<div class="content">
 			<h2>Profile Page</h2>
 			<div>
@@ -75,7 +104,11 @@ displayData($con);
 					</tr>
 					<tr>
 						<td>Password:</td>
-						<td><?=$_SESSION['password']?></td>
+						<form action="profile.php"><td><input type="text" name="pwd" placeholder="Input current password" require></td></tr><tr>
+						<td><td><input type="text" name='new-pwd0' placeholder="Input new password" require>
+						<input type='hidden' name='emp-id' value='<?php echo $_SESSION['username'] ?>'></td>
+						<td><input type="text" name='new-pwd' placeholder="Input new password" require></td>
+						<td><input type="submit" value="edit password"></td></form>
 					</tr>
 				</table>
 			</div>
