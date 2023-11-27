@@ -12,7 +12,10 @@ if (isset($_POST['lname']) && !empty($_POST['lname']))
     $query = $query . "Last_Name='{$_POST['lname']}', ";
 
 if (isset($_POST['lname']) && !empty($_POST['blood']))
-    $query = $query . "Blood_type='{$_POST['blood']}' ";
+    $query = $query . "Blood_type='{$_POST['blood']}', ";
+
+if (isset($_POST['history']) && !empty($_POST['history']))
+    $query = $query . "History='{$_POST['history']}' ";
 
 // We need to check if the donor with that id exists.
 if (substr($query, -2)  == ", ") 

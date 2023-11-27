@@ -46,7 +46,7 @@ function appointmentList($con, $partition) {
 			if(mysqli_num_rows($query_run) > 0 || mysqli_num_rows($query_run2) > 0)
 			{
 				$query = "SELECT First_Name, Last_Name FROM employee WHERE SSN='{$row['Employee']}'";
-				$query2 = "SELECT First_Name, Last_Name, Blood_type FROM donor WHERE ID='{$row['Donor_ID']}'";
+				$query2 = "SELECT First_Name, Last_Name, Blood_type, History FROM donor WHERE ID='{$row['Donor_ID']}'";
 				$query_run = mysqli_query($con, $query);
 				$query_run2 = mysqli_query($con, $query2);
 
@@ -94,11 +94,13 @@ function appointmentList($con, $partition) {
 							<form id='edit' action='edit-appt.php' method='post' autocomplete='off'>
 								<input type='hidden' name='Donor_ID' value='".$row['Donor_ID']."'>
 								<label>Donor First Name</label>
-								<input type='text' name='fname' placeholder='First' id='username'>
+								<input type='text' name='fname' value='".$fname."' placeholder='First' id='username'>
 								<label>Donor Last Name</label>
-								<input type='password' name='lname' placeholder='Last' id='password'>
+								<input type='text' name='lname'  value='".$lname."' placeholder='Last' id='password'>
 								<label>Donor Blood Type</label>
-								<input type='text' name='blood' placeholder='00000000' id='fname'>
+								<input type='text' name='blood' value='".$blood."' placeholder='00000000' id='fname'>
+								<label>History</label>
+								<input type='text' name='history' value='".$items2['History']."' id='history'>
 
 								<input style='height: 50px; width: 80px' type='submit' value='Edit'>
 				

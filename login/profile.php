@@ -32,20 +32,24 @@ function editPassword($con) {
 	if (isset($_POST['pwd']) && isset($_POST['new-pwd0']) && isset($_POST['new-pwd']) 
 	&& !empty($_POST['pwd']) && !empty($_POST['new-pwd0']) && !empty($_POST['new-pwd'])) {
 
-		$query = "SELECT password FROM employee WHERE Username='{$_POST['emp-id']}'";
+		$query = "SELECT Password FROM employee WHERE SSN='{$_POST['emp-id']}'";
 		$query_run = mysqli_query($con, $query);
 	
-		if ($_SESSION['new-pwd0'] == $_SESSION['new-pwd'] && mysqli_num_rows($query_run) > 0)  {
+		if ($_POST['new-pwd0'] == $_POST['new-pwd'] && mysqli_num_rows($query_run) > 0)  {
+
 			foreach($query_run as $items) {
-				if (password_verify($_POST['pwd'] == $items['Password'])) {
-					$query = "UPDATE employee SET Password='{$_POST['new-pwd']}' WHERE Username='{$_SESSION['username']}'";
+				if (password_verify($_POST['pwd'], $items['Password'])) {
+					$password = password_hash($_POST['new-pwd'], PASSWORD_DEFAULT);
+					$query = "UPDATE employee SET Password='{$password}' WHERE SSN='{$_POST['emp-id']}'";
 					$query_run = mysqli_query($con, $query);
+				}
+				else {
+					echo '<script>alert("Please enter your current password")</script>'; 
 				}
 			}	
 		}
 		else
-
-			header(Location: 'profile.php');
+			echo '<script>alert("New passwords must be identical")</script>'; 
 	}
 }
 
@@ -104,10 +108,10 @@ editPassword($con);
 					</tr>
 					<tr>
 						<td>Password:</td>
-						<form action="profile.php"><td><input type="text" name="pwd" placeholder="Input current password" require></td></tr><tr>
-						<td><td><input type="text" name='new-pwd0' placeholder="Input new password" require>
-						<input type='hidden' name='emp-id' value='<?php echo $_SESSION['username'] ?>'></td>
-						<td><input type="text" name='new-pwd' placeholder="Input new password" require></td>
+						<form action="profile.php" method="post"><td><input type="password" name="pwd" placeholder="Input current password" require></td></tr><tr>
+						<td><td><input type="password" name='new-pwd0' placeholder="Input new password" require>
+						<input type='hidden' name='emp-id' value='<?php echo $_SESSION['ssn'] ?>'></td>
+						<td><input type="password" name='new-pwd' placeholder="Input new password" require></td>
 						<td><input type="submit" value="edit password"></td></form>
 					</tr>
 				</table>
