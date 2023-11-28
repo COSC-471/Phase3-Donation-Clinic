@@ -61,7 +61,7 @@
             </tr>
             <?php
                 // Connect to database
-                $con = mysqli_connect("localhost", "root", "", "blood clinic");
+                $con = mysqli_connect("localhost", "root", "", "blood_clinic");
 
                 if ($con -> connect_error) {
                     die("Connection failed:" . $con -> connect_error);
