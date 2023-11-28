@@ -133,6 +133,28 @@ function searchBar() {
 	';
 }
 
+function listClinics($con) {
+	$sql = "SELECT * FROM `clinic`";
+	$result = $con -> query($sql);
+
+	if ($result -> num_rows > 0) {
+		while ($row = $result -> fetch_assoc()) {
+
+			$sql2 = "SELECT COUNT(*) FROM `receiver` WHERE Received_from='{$row['ID']}'";
+			$result2 = $con -> query($sql2);
+			$row2['COUNT(*)'] = 0;
+
+			if ($result2 && $result2 -> num_rows > 0)
+				$row2 = $result2 -> fetch_assoc();
+
+			echo "<tr><td>" . $row["Hospital_Receiving"] . "</td><td>" . $row["Location"] . "</td><td>" . $row["Blood_num"]. 
+			"</td><td>" . ($row2['COUNT(*)'] == 0 ? '0' : $row2['COUNT(*)']) . "</td></tr>";
+		}
+		echo "</table>";
+	}
+
+	$con -> close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -180,6 +202,18 @@ function searchBar() {
 					appointmentList($con, TRUE);
 				?>
 			</div>
+
+			<h2>Clinics</h2>
+
+			<div>
+				<table style="  display: block; height: 500px; overflow-y: scroll">
+				<tr>
+					<th>Name</th><th>Location</th><th>Blood Storage</th><th>Receivers</th>
+				</tr>
+			<?php
+				listClinics($con);
+			?>
+			<div>
 		</div>
 
 		

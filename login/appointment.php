@@ -14,6 +14,9 @@
     $sql = "SELECT * FROM `DONOR`";
     $donors = mysqli_query($con,$sql);
 
+    $sql = "SELECT * FROM `clinic`";
+    $clinic = mysqli_query($con,$sql);
+
     // Depending on the employee chosen, populate the location input
     if (isset($_POST['Category'])) {
         $_SESSION['selected'] = $_POST['Category'];
@@ -64,6 +67,12 @@
         
         $stmt->bind_param('iiis', $location, $employee, $donor, $date);
         $stmt->execute();
+
+        $stmt = $con->prepare('UPDATE clinic SET Blood_num = Blood_num + 1 WHERE ID=?');
+        $clinic = (int) $_POST['clinic'];
+        $stmt->bind_param('i', $clinic);
+        $stmt->execute();  
+
 
         header('Location: home.php');        
     }

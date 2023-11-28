@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // connect using the info above.
 
 $con = mysqli_connect('localhost', 'root', '', 'blood clinic');
@@ -19,6 +19,10 @@ if (isset($_POST['submit'])) {
     }
     $con->close();
 
-    header('Location: home.php');       
+    if (isset($_SESSION['Donor-id'])) {
+        header('Location: Donor-home.php');       
+    }
+    else
+        header('Location: home.php');       
 }
 ?>

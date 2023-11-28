@@ -13,6 +13,8 @@
 		<ul>
             <li style="margin-left:100px;"><a style="color: white" id="home" href="index.html">Red Cross</a></li>
             <li style="float:right"><a class="active" href="login.php">Employee Portal</a></li>
+			<li style="float:right"><a class="active" href="Donor-login.php">Patient Portal</a></li>
+
         </ul>
 		<div class="login">
 			<h1>Login</h1>
